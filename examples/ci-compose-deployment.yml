@@ -1,0 +1,19 @@
+- id: ci-compose-deployment
+  execute-command: deploy-branch.sh
+  command-working-directory: /containers/the-compose-project
+  response-headers:
+    - name: Access-Control-Allow-Origin
+      value: '*'
+  pass-arguments-to-command:
+    - source: payload
+      name: branch
+  include-command-output-in-response: true
+  include-command-output-in-response-on-error: true
+  trigger-rule:
+    and:
+    - match:
+        type: payload-hmac-sha1
+        secret: mysecret
+        parameter:
+          source: header
+          name: X-Signature

@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  app:
+    image: sterexx/compose-webhook
+    tty: true
+    volumes:
+      - ./hooks.yml:/etc/webhook/hooks.yml"

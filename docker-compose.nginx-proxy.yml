@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  app:
+    environment:
+      VIRTUAL_HOST: ${VIRTUAL_HOST:?err}
+      VIRTUAL_PORT: 9000
+    networks:
+      - default
+      - nginx-proxy
+
+networks:
+  default: {}
+  nginx-proxy:
+    external: true
