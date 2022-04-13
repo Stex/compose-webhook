@@ -5,4 +5,4 @@ services:
     image: sterexx/compose-webhook
     tty: true
     volumes:
-      - ./hooks.yml:/etc/webhook/hooks.yml"
+      - ./hooks.yml:/etc/webhook/hooks.yml
