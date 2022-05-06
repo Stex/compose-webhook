@@ -12,6 +12,9 @@ RUN         curl -L --silent -o webhook.tar.gz https://github.com/adnanh/webhook
 
 FROM linuxserver/docker-compose:v2
 RUN         apk add --no-cache curl bash jq ncurses
+RUN         curl -L https://github.com/a8m/envsubst/releases/download/v1.2.0/envsubst-`uname -s`-`uname -m` -o envsubst
+RUN         chmod +x envsubst
+RUN         mv envsubst /usr/local/bin
 COPY        --from=build /usr/local/bin/webhook /usr/local/bin/webhook
 COPY        ./docker-entrypoint.sh /docker-entrypoint.sh
 WORKDIR     /etc/webhook
