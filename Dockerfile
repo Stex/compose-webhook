@@ -11,7 +11,7 @@ RUN         curl -L --silent -o webhook.tar.gz https://github.com/adnanh/webhook
             rm -rf /go
 
 FROM linuxserver/docker-compose:v2
-RUN         apk add --no-cache curl bash jq tput
+RUN         apk add --no-cache curl bash jq ncurses
 COPY        --from=build /usr/local/bin/webhook /usr/local/bin/webhook
 COPY        ./docker-entrypoint.sh /docker-entrypoint.sh
 WORKDIR     /etc/webhook
